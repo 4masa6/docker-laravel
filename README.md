@@ -19,7 +19,7 @@ docker-compose build
 docker-compose up -d
 
 # コンテナに入る
-docker-comppse exec php /bin/bash
+docker-compose exec php /bin/bash
 
 # Laravelプロジェクト作成
 composer create-project --prefer-dist laravel/laravel src "8.*"
