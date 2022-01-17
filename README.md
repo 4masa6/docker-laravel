@@ -30,6 +30,9 @@ cp .env.example .env
 php artisan key:generate
 ```
 
+URL
+`http://127.0.0.1:8000/`
+
 ### DBとの接続
 
 - phpMyAdminに接続 `http://127.0.0.1:8086/`
@@ -39,7 +42,7 @@ CREATE DATABASE docker_laravel DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_uni
 ```
 
 - .envファイルを修正
-```
+```plain:.env
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
@@ -49,7 +52,7 @@ DB_PASSWORD=password
 ```
 
 - phpコンテナに入り、マイグレーションを実行
-```
+```bash
 docker-compose exec php /bin/bash
 cd src
 php artisan migrate
@@ -59,6 +62,7 @@ php artisan migrate
 
 ```bash
 docker-compose exec php /bin/bash
+cd src
 composer require laravel/breeze "1.*" --dev
 php artisan breeze:install
 npm install && npm run dev
