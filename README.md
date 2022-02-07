@@ -58,6 +58,13 @@ cd src
 php artisan migrate
 ```
 
+### src/.gitignore 編集
+下記を追記
+```
+/public/css/app.css
+/public/js/app.js
+```
+
 ### LaravelBreezeのインストール
 
 ```bash
