@@ -34,12 +34,12 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.0.0
     container_name: phpmyadmin
-    environment:
+    env_file:
+      - .env
+    depends_on:
       - PMA_ARBITRARY=1
       - PMA_HOST=db
       - PMA_USER=root
       - PMA_PASSWORD=password
-    depends_on:
-      - db
     ports:
       - 8086:80
