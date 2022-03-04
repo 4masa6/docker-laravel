@@ -21,19 +21,6 @@ services:
       - ./:/var/www/html
       - ./docker/php/log/:/var/log/php/
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:5.0.0
-    container_name: phpmyadmin
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=db
-      - PMA_USER=root
-      - PMA_PASSWORD=password
-    depends_on:
-      - db
-    ports:
-      - 8086:80
-
   db:
     image: mysql:5.7
     container_name: mysql
@@ -43,6 +30,13 @@ services:
       - ./docker/db/data:/var/lib/mysql
       - ./docker/db/log/:/var/log/mysql
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      TZ: Asia/Tokyo
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0.0
+    container_name: phpmyadmin
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - 8086:80

@@ -35,20 +35,33 @@ URL
 
 ### DBとの接続
 
-- phpMyAdminに接続 `http://127.0.0.1:8086/`
+- phpMyAdminの設定
+
+```bash
+cp .env.example .env
+```
+```plain:/.env
+# 後述の/src/.envのMySQL情報と合わせる
+PMA_ARBITRARY=1
+PMA_HOST=
+PMA_USER=
+PMA_PASSWORD=
+```
+
+- phpMyAdminにアクセス `http://127.0.0.1:8086/`
 - 上部「DB」タブより、下記SQLを実行
 ```sql
 CREATE DATABASE <データベース名> DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ```
 
 - .envファイルを修正
-```plain:.env
+```plain:/src/.env
 DB_CONNECTION=mysql
-DB_HOST=db
+DB_HOST=db # 必要であれば設定し変更
 DB_PORT=3306
-DB_DATABASE=<データベース名>
-DB_USERNAME=root
-DB_PASSWORD=password
+DB_DATABASE=<データベース名（snake_case）>
+DB_USERNAME=root # 必要であれば設定し変更
+DB_PASSWORD=password # 必要であれば設定し変更
 ```
 
 - phpコンテナに入り、マイグレーションを実行
