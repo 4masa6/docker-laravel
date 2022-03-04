@@ -30,8 +30,6 @@ services:
       - ./docker/db/data:/var/lib/mysql
       - ./docker/db/log/:/var/log/mysql
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
-    environment:
-      TZ: Asia/Tokyo
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.0.0
