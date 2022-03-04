@@ -12,22 +12,6 @@ git pull https://github.com/4masa6/docker-laravel.git
 
 cd docker-laravel
 
-# /.envを作成
-
-```bash
-cp .env.example .env
-```
-
-- phpMyAdminの設定
-
-```plain:/.env
-# 後述の/src/.envのMySQL情報と合わせる
-PMA_ARBITRARY=1
-PMA_HOST=db
-PMA_USER=
-PMA_PASSWORD=
-```
-
 # ビルド
 docker-compose build
 
@@ -39,11 +23,6 @@ docker-compose exec php /bin/bash
 
 # Laravelプロジェクト作成
 composer create-project --prefer-dist laravel/laravel src "8.*"
-
-# /src/.envファイルを作成
-cd src
-cp .env.example .env
-php artisan key:generate
 ```
 
 URL
@@ -51,19 +30,16 @@ URL
 
 ### DBとの接続
 
-- phpMyAdminの設定
-
-
 - phpMyAdminにアクセス `http://127.0.0.1:8086/`
 - 上部「DB」タブより、下記SQLを実行
 ```sql
-CREATE DATABASE <データベース名> DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+CREATE DATABASE <データベース名（snake_case）> DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ```
 
 - .envファイルを修正
 ```plain:/src/.env
 DB_CONNECTION=mysql
-DB_HOST=db # 必要であれば設定し変更
+DB_HOST=db
 DB_PORT=3306
 DB_DATABASE=<データベース名（snake_case）>
 DB_USERNAME=root # 必要であれば設定し変更
