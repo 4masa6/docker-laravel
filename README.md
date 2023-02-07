@@ -8,7 +8,7 @@ PHP8・Laravel8・Nginx・MySQL
 
 ```bash
 # プロジェクトをダウンロード
-git pull https://github.com/4masa6/docker-laravel.git
+git clone https://github.com/4masa6/docker-laravel.git
 
 cd docker-laravel
 
@@ -73,4 +73,27 @@ cd src
 composer require laravel/breeze "1.*" --dev
 php artisan breeze:install
 npm install && npm run dev
+```
+
+### Tailwind CSSの反映とバージョン管理
+
+- src/webpack.mix.js　変更
+
+```js:src/webpack.mix.js
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss'),
+    ])
+    .version()
+    .disableNotifications();
+```
+
+- src/resources/views/layouts/app.blade.php と src/resources/views/layouts/guest.blade.php のhead要素内変更
+
+```html
+<!-- Styles -->
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+<!-- Scripts -->
+<script src="{{ mix('js/app.js') }}" defer></script>
 ```
