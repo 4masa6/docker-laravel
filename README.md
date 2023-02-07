@@ -94,6 +94,12 @@ mix.js('resources/js/app.js', 'public/js')
 <!-- Styles -->
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-<!-- Scripts（※これは</body>の直前に記述する） -->
+<!-- ※これは</body>の直前に記述する -->
+<!-- Scripts -->
 <script src="{{ mix('js/app.js') }}" defer></script>
+```
+headタグ内の以下の記述は削除する
+```html
+<!-- Scripts -->
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 ```
