@@ -94,6 +94,6 @@ mix.js('resources/js/app.js', 'public/js')
 <!-- Styles -->
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-<!-- Scripts -->
+<!-- Scripts（※これは</body>の直前に記述する） -->
 <script src="{{ mix('js/app.js') }}" defer></script>
 ```
