@@ -63,6 +63,8 @@ php artisan migrate
 ```
 /public/css/app.css
 /public/js/app.js
+
+/src/public/mix-manifest.json
 ```
 
 ### LaravelBreezeのインストール
