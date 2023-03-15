@@ -23,6 +23,7 @@ services:
 
   db:
     image: mysql:5.7
+    platform: linux/x86_64 # M1での対応
     container_name: mysql
     ports:
       - 3306:3306
@@ -36,6 +37,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:5.0.0
+    platform: linux/x86_64 # M1での対応
     container_name: phpmyadmin
     environment:
       - PMA_ARBITRARY=1
