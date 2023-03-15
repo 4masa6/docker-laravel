@@ -12,7 +12,7 @@ git clone https://github.com/4masa6/docker-laravel.git
 
 cd docker-laravel
 
-# コンテナ名が被らないよう修正
+# コンテナ名が被らないよう修正する
 # MySQLなど、他で稼働しているコンテナがあればポートを変更
 
 # ビルド
